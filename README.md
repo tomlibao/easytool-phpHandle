@@ -1,15 +1,16 @@
-# Easytool-StringHandle
+# 关于该组件
 
-这是一个PHP常用操作字符串的组件，里面提供了很多业务中字符串操作的使用场景。
+这是一个PHP常用字符串操作、数组操作、常规验证、业务常用转化的组件，里面提供了很多业务中能使用到的场景。
 
 # 使用
 
-`composer require easytool/string-handle`
+`composer require easytool/php-handle`
 
 # 功能简介
 
+## 一、php常用字符串操作
 
-### 一、判断一个字符串是否包含某些字符
+### 1.1 判断一个字符串是否包含某些字符
 
 包含的话则返回true，不包含的话则返回false。
 
@@ -17,7 +18,7 @@
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\StringHandle\StringHandle();
+$obj = new \Easytool\PhpHandle\StringHandle();
 $res1 = $obj->isContain('hello world', 'llo');
 $res2 = $obj->isContain('hello world', 'haha');
 var_dump($res1);
@@ -30,7 +31,7 @@ bool(true)
 bool(false)
 ```
 
-### 二、判断一个字符串是否全部都是中文
+### 1.2 判断一个字符串是否全部都是中文
 
 全部是中文则返回true，否则返回false。
 
@@ -38,7 +39,7 @@ bool(false)
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\StringHandle\StringHandle();
+$obj = new \Easytool\PhpHandle\StringHandle();
 $res1 = $obj->isAllContainChinese('我爱你中国');
 $res2 = $obj->isAllContainChinese('我爱你，中国');
 var_dump($res1);
@@ -52,7 +53,7 @@ bool(true)
 bool(false)
 ```
 
-### 三、判断字符串中是否包含中文
+### 1.3 判断字符串中是否包含中文
 
 包含中文则返回true，不包含中文则返回false。
 
@@ -60,7 +61,7 @@ bool(false)
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\StringHandle\StringHandle();
+$obj = new \Easytool\PhpHandle\StringHandle();
 $res1 = $obj->isContainChinese('hello');
 $res2 = $obj->isContainChinese('hello啊');
 var_dump($res1);
@@ -74,7 +75,7 @@ bool(false)
 bool(true)
 ```
 
-### 四、是否包含合法字符串（数字、字母、下划线）
+### 1.4 是否包含合法字符串（数字、字母、下划线）
 
 合法则返回true，不合法则返回false。
 
@@ -82,7 +83,7 @@ bool(true)
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\StringHandle\StringHandle();
+$obj = new \Easytool\PhpHandle\StringHandle();
 $res1 = $obj->isLegalString('hello_123');
 $res2 = $obj->isLegalString('hello_123_%#');
 var_dump($res1);
@@ -96,13 +97,13 @@ bool(true)
 bool(false)
 ```
 
-### 五、获取指定长度的随机字符串
+### 1.5 获取指定长度的随机字符串
 
 ```php 
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\StringHandle\StringHandle();
+$obj = new \Easytool\PhpHandle\StringHandle();
 $res1 = $obj->getRandStrByLength(10);
 $res2 = $obj->getRandStrByLength(8);
 var_dump($res1);
@@ -116,13 +117,13 @@ string(10) "9d7dd5a08c"
 string(8) "9a94a08d"
 ```
 
-### 六、去除数字字符串中的前导 0
+### 1.6 去除数字字符串中的前导 0
 
 ```php 
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\StringHandle\StringHandle();
+$obj = new \Easytool\PhpHandle\StringHandle();
 
 $res1 = $obj->getRemoveHeadZero('008812');
 $res2 = $obj->getRemoveHeadZero('00101');
@@ -137,18 +138,10 @@ string(3) "101"
 ```
 
 
-# Easytool-ArrayHandle
 
-这是一个PHP常用操作数组的组件，里面提供了很多业务中数组操作的使用场景。
+## 二、php常用数组操作
 
-# 使用
-
-`composer require easytool/array-handle`
-
-# 功能简介
-
-
-### 一、随机打乱多维数组（原有的key不变）
+### 2.1 随机打乱多维数组（原有的key不变）
 
 示例：
 
@@ -156,7 +149,7 @@ string(3) "101"
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\ArrayHandle\ArrayHandle();
+$obj = new \Easytool\PhpHandle\ArrayHandle();
 
 $towArr = [
     '0' => [
@@ -254,7 +247,7 @@ Array
 
 PS：这个操作只会随机调整多维数组顺序，原有的 key 不变，如果想要重新整合 key（从0开始排列）就 array_value 一下即可。
 
-### 二、对二维数组的某个列进行 正倒序排列
+### 2.2 对二维数组的某个列进行 正倒序排列
 
 示例：
 
@@ -262,7 +255,7 @@ PS：这个操作只会随机调整多维数组顺序，原有的 key 不变，�
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\ArrayHandle\ArrayHandle();
+$obj = new \Easytool\PhpHandle\ArrayHandle();
 
 $towArr = [
     '0' => [
@@ -360,7 +353,7 @@ Array
 )
 ```
 
-### 三、获取二维数组某一数值列的总和
+### 2.3 获取二维数组某一数值列的总和
 
 示例：
 
@@ -368,7 +361,7 @@ Array
 <?php
 require "vendor/autoload.php";
 
-$obj = new \Easytool\ArrayHandle\ArrayHandle();
+$obj = new \Easytool\PhpHandle\ArrayHandle();
 
 $towArr = [
     '0' => [
@@ -410,4 +403,53 @@ print_r($res1);
 
 ```php 
 46
+```
+
+## 三、php常用验证
+
+
+
+
+## 四、php常用转化
+
+### 4.1 通过身份证号获取性别
+
+女性返回1，男性返回2
+
+```php 
+<?php
+require "vendor/autoload.php";
+
+$convertObj = new \Easytool\PhpHandle\ConvertHandle();
+//$stringObj = new \Easytool\PhpHandle\StringHandle();
+//$arrayObj = new \Easytool\PhpHandle\ArrayHandle();
+//$validateObj = new \Easytool\PhpHandle\ValidateHandle();
+
+print_r($convertObj->getSexByIdCard('372922198712078787'));
+```
+
+输出：
+
+```txt
+1
+```
+
+### 4.2 通过身份证号获取生肖
+
+```php
+<?php
+require "vendor/autoload.php";
+
+$convertObj = new \Easytool\PhpHandle\ConvertHandle();
+//$stringObj = new \Easytool\PhpHandle\StringHandle();
+//$arrayObj = new \Easytool\PhpHandle\ArrayHandle();
+//$validateObj = new \Easytool\PhpHandle\ValidateHandle();
+
+print_r($convertObj->getSXbyIdCard('372922198712078787'));
+```
+
+输出：
+
+```text
+兔
 ```
