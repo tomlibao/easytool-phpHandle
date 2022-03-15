@@ -1,0 +1,19 @@
+{
+    "name": "easytool/php-handle",
+    "type": "library",
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Easytool\\PhpHandle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "tomlibao",
+            "email": "1843622620@qq.com"
+        }
+    ]
+}
